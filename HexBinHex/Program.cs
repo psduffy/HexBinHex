@@ -10,28 +10,36 @@ namespace HexBinHex
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter a binary or hexadecimal number:");
-            string inputValue = Console.ReadLine();
-
-            string outputValue;
-
-            if (IsBinary(inputValue))
+            while (true)
             {
-                outputValue = "Hex: " + BinaryToHex(inputValue);
-            }
-            else if (IsHexadecimal(inputValue))
-            {
-                outputValue = "Binary: " + HexToBinary(inputValue);
-            }
-            else
-            {
-                outputValue = "Invalid input.";
+                Console.WriteLine("Enter a binary or hexadecimal number (or type 'exit' to quit):");
+                string inputValue = Console.ReadLine();
+
+                // Check if the user wants to exit the program
+                if (inputValue.Equals("exit", StringComparison.OrdinalIgnoreCase))
+                {
+                    break;
+                }
+
+                string outputValue;
+
+                if (IsBinary(inputValue))
+                {
+                    outputValue = "Hex: " + BinaryToHex(inputValue);
+                }
+                else if (IsHexadecimal(inputValue))
+                {
+                    outputValue = "Binary: " + HexToBinary(inputValue);
+                }
+                else
+                {
+                    outputValue = "Invalid input.";
+                }
+
+                Console.WriteLine(outputValue);
             }
 
-            Console.WriteLine(outputValue);
-
-            // Add this line to wait for user input before closing the console window
-            Console.WriteLine("Press any key to exit.");
+            Console.WriteLine("Program exited. Press any key to close.");
             Console.ReadKey();
         }
 
